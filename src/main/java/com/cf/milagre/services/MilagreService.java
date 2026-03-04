@@ -2,6 +2,7 @@ package com.cf.milagre.services;
 
 import com.cf.milagre.models.MilagreModel;
 import com.cf.milagre.repositories.MilagreRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 @Service
 public class MilagreService {
 
+    @Autowired
     private MilagreRepository milagreRepository;
 
     // GET (TODOS)
@@ -28,7 +30,7 @@ public class MilagreService {
     }
 
     // UPDATE
-    public MilagreModel updateMilagre(MilagreModel milagreModel) {
+    public MilagreModel updateMilagre(Long id, MilagreModel milagreModel) {
         MilagreModel newMilagre = milagreRepository.findById(milagreModel.getId()).get();
         newMilagre.setNome(milagreModel.getNome());
 
